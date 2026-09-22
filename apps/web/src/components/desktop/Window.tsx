@@ -3,6 +3,7 @@ import { Rnd, type RndDragCallback, type RndResizeCallback } from 'react-rnd'
 import type { WindowInstance } from '@/window-manager/types'
 import { getPointerPosition, resolveSnapZone, useWindowActions } from '@/window-manager/actions'
 import { useWindowStore } from '@/window-manager/store'
+import { TOPBAR_HEIGHT } from '@/window-manager/layout'
 import { windowedApps } from '@/apps/registry'
 import { cn } from '@/lib/utils'
 
@@ -38,6 +39,14 @@ export function Window({ win }: WindowProps) {
 
   const appDef = windowedApps[win.appId]
   const Content = appDef?.component
+
+  // Cap resize height so a window's bottom edge can never be dragged under the Dock —
+  // otherwise the Dock (which sits above windows in z-order) swallows the resize
+  // handle's clicks and the window gets permanently stuck at that size.
+  const dockRect = useWindowStore((s) => s.dockRect)
+  const maxHeight = dockRect
+    ? Math.max(win.minHeight, dockRect.y - TOPBAR_HEIGHT - win.y - 24)
+    : undefined
 
   const [isDragging, setIsDragging] = useState(false)
   const [isResizing, setIsResizing] = useState(false)
@@ -141,8 +150,17 @@ export function Window({ win }: WindowProps) {
     if (zone) applySnap(win.id, zone)
   }
 
+  const handleResize: RndResizeCallback = (_e, _dir, ref) => {
+    const dockRect = useWindowStore.getState().dockRect
+    if (dockRect) {
+      const rect = ref.getBoundingClientRect()
+      setDockAutoHidden(rectsOverlap(rect, dockRect))
+    }
+  }
+
   const handleResizeStop: RndResizeCallback = (_e, _dir, ref, _delta, position) => {
     setIsResizing(false)
+    setDockAutoHidden(false)
     resizeWindow(win.id, {
       x: position.x,
       y: position.y,
@@ -157,6 +175,7 @@ export function Window({ win }: WindowProps) {
       size={{ width: win.width, height: win.height }}
       minWidth={win.minWidth}
       minHeight={win.minHeight}
+      maxHeight={maxHeight}
       bounds="parent"
       dragHandleClassName="window-titlebar"
       cancel="button"
@@ -169,6 +188,7 @@ export function Window({ win }: WindowProps) {
         setIsResizing(true)
         focusWindow(win.id)
       }}
+      onResize={handleResize}
       onResizeStop={handleResizeStop}
       style={{ zIndex: win.zIndex }}
       className={cn(
