@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
-import { launcherApps } from '@/lib/apps'
+import { dockApps } from '@/lib/dock-apps'
+import { AppIconTile } from './AppIconTile'
 
 interface AppLauncherProps {
   open: boolean
   onClose: () => void
 }
+
+const launcherApps = dockApps.filter((app) => app.kind === 'app')
 
 export function AppLauncher({ open, onClose }: AppLauncherProps) {
   useEffect(() => {
@@ -34,8 +37,8 @@ export function AppLauncher({ open, onClose }: AppLauncherProps) {
             key={app.id}
             className="flex w-20 flex-col items-center gap-1.5 rounded-macos-md p-2 text-white select-none"
           >
-            <div className="flex h-14 w-14 items-center justify-center rounded-macos-md bg-white/15 backdrop-blur-sm">
-              <app.icon size={28} color="white" />
+            <div className="h-14 w-14">
+              <AppIconTile app={app} />
             </div>
             <span className="text-xs drop-shadow-md">{app.label}</span>
           </div>
