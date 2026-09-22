@@ -1,0 +1,4 @@
+*.md
+pnpm-lock.yaml
+apps/*/dist
+package/

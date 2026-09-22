@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+/* @sylonikse/macos-ui's published package is missing dist/styles (packaging
+   bug in 0.2.0), so this is a local copy of its theme.css — same file the
+   package's own CLI would copy-paste in. Revisit if a fixed version ships. */
+@import './styles/macos-theme.css';
