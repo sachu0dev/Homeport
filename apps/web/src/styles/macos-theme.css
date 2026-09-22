@@ -39,26 +39,26 @@
   --macos-shadow-dock: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark mode theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --macos-background: hsl(222.2 84% 4.9%);
-    --macos-foreground: hsl(210 40% 98%);
-    --macos-primary: hsl(217.2 91.2% 59.8%);
-    --macos-secondary: hsl(217.2 32.6% 17.5%);
-    --macos-accent: hsl(217.2 32.6% 17.5%);
-    --macos-muted: hsl(217.2 32.6% 17.5%);
-    --macos-border: hsl(217.2 32.6% 17.5%);
+/* Dark mode theme — driven by a `data-theme` attribute on <html> (set from
+   localStorage/system preference in index.html and toggled via useTheme),
+   rather than @media, so a manual light/dark toggle can override the OS. */
+:root[data-theme='dark'] {
+  --macos-background: hsl(222.2 84% 4.9%);
+  --macos-foreground: hsl(210 40% 98%);
+  --macos-primary: hsl(217.2 91.2% 59.8%);
+  --macos-secondary: hsl(217.2 32.6% 17.5%);
+  --macos-accent: hsl(217.2 32.6% 17.5%);
+  --macos-muted: hsl(217.2 32.6% 17.5%);
+  --macos-border: hsl(217.2 32.6% 17.5%);
 
-    --macos-windowBackground: hsla(222.2 84% 4.9% / 0.8);
-    --macos-windowBorder: hsl(217.2 32.6% 17.5%);
-    --macos-dockBackground: hsla(222.2 84% 4.9% / 0.7);
-    --macos-menuBarBackground: hsla(222.2 84% 4.9% / 0.8);
+  --macos-windowBackground: hsla(222.2 84% 4.9% / 0.8);
+  --macos-windowBorder: hsl(217.2 32.6% 17.5%);
+  --macos-dockBackground: hsla(222.2 84% 4.9% / 0.7);
+  --macos-menuBarBackground: hsla(222.2 84% 4.9% / 0.8);
 
-    --macos-shadow-window: 0 10px 40px rgba(0, 0, 0, 0.5);
-    --macos-shadow-windowActive: 0 20px 60px rgba(0, 0, 0, 0.7);
-    --macos-shadow-dock: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
+  --macos-shadow-window: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --macos-shadow-windowActive: 0 20px 60px rgba(0, 0, 0, 0.7);
+  --macos-shadow-dock: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Base styles for macOS UI */
