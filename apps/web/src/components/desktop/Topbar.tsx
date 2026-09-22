@@ -25,7 +25,7 @@ export function Topbar({
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
-    <div className="relative z-20">
+    <div className="relative z-[100]">
       <MenuBar
         // @sylonikse/macos-ui's MenuBar hardcodes `bg-white/20` instead of
         // using the --macos-menuBarBackground token, so it never responds to

@@ -61,6 +61,27 @@ export const dockApps: DockApp[] = [
     tile: 'bg-gradient-to-br from-pink-400 via-orange-400 to-purple-500',
   },
   {
+    id: 'resource-monitor',
+    label: 'Activity Monitor',
+    iconSrc: '/icons/gauge.svg',
+    kind: 'app',
+    tile: 'bg-gradient-to-b from-slate-400 to-slate-700',
+  },
+  {
+    id: 'terminal',
+    label: 'Terminal',
+    iconSrc: '/icons/terminal.svg',
+    kind: 'app',
+    tile: 'bg-gradient-to-b from-neutral-700 to-black',
+  },
+  {
+    id: 'code-editor',
+    label: 'Code Editor',
+    iconSrc: '/icons/keyboard.svg',
+    kind: 'app',
+    tile: 'bg-gradient-to-b from-indigo-400 to-violet-700',
+  },
+  {
     id: 'settings',
     label: 'Settings',
     iconSrc: '/icons/gear.svg',

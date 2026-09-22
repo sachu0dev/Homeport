@@ -46,4 +46,4 @@ export const wallpapers: Wallpaper[] = [
   },
 ]
 
-export const defaultWallpaperId = wallpapers[0].id
+export const defaultWallpaperId = 'monterey'

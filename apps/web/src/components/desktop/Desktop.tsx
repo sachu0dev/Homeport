@@ -3,6 +3,7 @@ import { Topbar } from './Topbar'
 import { Taskbar } from './Taskbar'
 import { DesktopIcons } from './DesktopIcons'
 import { AppLauncher } from './AppLauncher'
+import { WindowManager } from './WindowManager'
 import { useTheme } from '@/hooks/useTheme'
 import { useWallpaper } from '@/hooks/useWallpaper'
 
@@ -43,6 +44,8 @@ export function Desktop() {
       />
 
       <DesktopIcons />
+
+      <WindowManager />
 
       <Taskbar
         launcherOpen={launcherOpen}
