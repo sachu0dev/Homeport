@@ -6,6 +6,10 @@ const seedLines = [
   '$ docker ps --format "table {{.Names}}\\t{{.Status}}"',
   'homeport-api     Up 2 hours',
   'homeport-db      Up 2 hours',
+  '$ df -h /',
+  '/dev/sda1   460G   221G   239G   48%   /',
+  '$ uptime',
+  '08:03:14 up 2 days, 4:12, load average: 0.42, 0.38, 0.31',
 ]
 
 // Local-only echo — swap the submit handler for a real PTY/websocket session later.

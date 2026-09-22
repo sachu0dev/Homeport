@@ -28,6 +28,32 @@ const codeTabs = [
         ['punct', '      - '],
         ['string', '"4000:4000"'],
       ],
+      [
+        ['key', '    environment'],
+        ['punct', ':'],
+      ],
+      [
+        ['punct', '      - '],
+        ['string', 'NODE_ENV=production'],
+      ],
+      [['plain', '']],
+      [
+        ['key', '  db'],
+        ['punct', ':'],
+      ],
+      [
+        ['key', '    image'],
+        ['punct', ': '],
+        ['string', 'postgres:16'],
+      ],
+      [
+        ['key', '    volumes'],
+        ['punct', ':'],
+      ],
+      [
+        ['punct', '      - '],
+        ['string', 'db-data:/var/lib/postgresql/data'],
+      ],
     ],
   },
   {

@@ -11,6 +11,10 @@ const processes = [
   { name: 'postgres', cpu: '1.1%', mem: '212 MB' },
   { name: 'nginx', cpu: '0.4%', mem: '18 MB' },
   { name: 'docker-proxy', cpu: '0.2%', mem: '9 MB' },
+  { name: 'redis-server', cpu: '0.3%', mem: '14 MB' },
+  { name: 'node (vite)', cpu: '1.8%', mem: '156 MB' },
+  { name: 'tsx watch', cpu: '0.6%', mem: '72 MB' },
+  { name: 'sshd', cpu: '0.0%', mem: '4 MB' },
 ]
 
 function barColor(value: number) {
@@ -40,7 +44,7 @@ export function ResourceMonitorApp() {
         ))}
       </div>
 
-      <div>
+      <div className="flex-1">
         <p className="mb-1.5 text-xs font-medium text-macos-foreground/50">Processes</p>
         <table className="w-full border-collapse text-left">
           <thead>
